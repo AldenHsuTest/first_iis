@@ -32,7 +32,7 @@ jobs:
     steps: 
     - name: Deploy-Product
       run: |
-        cp -r -Force C:\projectTest C:\projectTest backup
-        rm -r C:\projectTest
-        mkdir C:\projectTest
-        cp -r -Force dist/* C:\projectTest
+        cp -r -Force ${{ secrets.SrcPath }} ${{ secrets.SrcPath }}backup
+        rm -r ${{ secrets.SrcPath }}
+        mkdir ${{ secrets.SrcPath }}
+        cp -r -Force dist/* ${{ secrets.SrcPath }}
