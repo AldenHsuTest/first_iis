@@ -1,0 +1,38 @@
+name: SBIR web product
+
+on:
+  push:
+jobs:
+  build:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [18.12.1]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.12.1'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build:prod
+  
+  deploy:
+    runs-on: self-hosted
+    if: ${{ success() }}
+    needs: build
+
+    steps: 
+    - name: Deploy-Product
+      run: |
+        cp -r -Force C:\projectTest C:\projectTest backup
+        rm -r C:\projectTest
+        mkdir C:\projectTest
+        cp -r -Force dist/* C:\projectTest
