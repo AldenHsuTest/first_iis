@@ -25,7 +25,7 @@ jobs:
     # 抓取npm快取路徑
     - name: Get npm cache directory
       id: npm-cache-dir
-      run: echo "dir=$(npm config get cache)" >> ${{GITHUB_ENV}}
+      run: echo "dir=$(npm config get cache)" >> ${{env:GITHUB_OUTPUT}}
     # 設定快取
     - uses: actions/cache@v3
       id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
