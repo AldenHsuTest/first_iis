@@ -23,15 +23,16 @@ jobs:
       with:
         node-version: '18.12.1'
     # 抓取npm快取路徑
-    - name: Get npm cache directory
-      id: npm-cache-dir
-      run: echo "dir=$(npm config get cache)" >> ${env:GITHUB_OUTPUT}
+    # - name: Get npm cache directory
+    #   id: npm-cache-dir
+    #   run: echo "dir=$(npm config get cache)" >> ${env:GITHUB_OUTPUT}
     # 設定快取
     - uses: actions/cache@v3
       id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
       with:
-        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        path: '**/node_modules'
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        enableCrossOsArchive: true
         restore-keys: |
           ${{ runner.os }}-node-
     # 安裝npm
