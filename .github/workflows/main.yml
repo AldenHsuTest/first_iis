@@ -23,15 +23,16 @@ jobs:
       with:
         node-version: '18.12.1'
     # 抓取npm快取路徑
+    # 抓取npm快取路徑
     - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)"
+      id: npm-cache-dir
+      run: echo "dir=$(npm config get cache)" >> $GITHUB_ENV
+    # 設定快取
     # 設定快取
     - name: Cache dependencies
       uses: actions/cache@v3
       with:
-        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        path: ${{ env.dir }}
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
