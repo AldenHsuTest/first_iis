@@ -25,8 +25,7 @@ jobs:
     # 抓取npm快取路徑
     - name: Get npm cache directory
       id: npm-cache-dir
-      shell: bash
-      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      run: echo "dir=$(npm config get cache)" >> $GITHUB_ENV
     # 設定快取
     - name: Cache dependencies
       uses: actions/cache@v3
