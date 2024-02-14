@@ -1,26 +1,36 @@
 name: SBIR web product
-
+# 設定當push，main節點的時候觸發此CI/CD流程
 on:
   push:
+    branches:
+      - main
 jobs:
+  # 工作流程名稱可以自己取名
   build:
+  # 設定runner
     runs-on: self-hosted
     strategy:
       matrix:
         node-version: [18.12.1]
-
+        
     steps:
-    - name: Checkout
+    # 取得程式碼
+    - name: get code
       uses: actions/checkout@v3
-
+    # 安裝node.js
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
         node-version: '18.12.1'
-
+    # 設定快取
+    - name: Cache dependencies
+      uses: actions/checkout@v3
+      with:
+        path: ~/.npm
+        key: deps-node-modules-${{ hashFiles('**/packge-lock.json') }}
+    # 安裝npm
     - name: Install dependencies
-      run: npm install
-
+      run: npm ci
     - name: Build
       run: npm run build
   
