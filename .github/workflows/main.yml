@@ -26,9 +26,8 @@ jobs:
     - name: Cache dependencies
       uses: actions/cache@v3
       with:
-        path: |
-        node_modules
-        ~/.npm
+        path: node_modules
+ 
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     # 安裝npm
     - name: Install dependencies
