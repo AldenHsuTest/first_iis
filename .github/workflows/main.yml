@@ -24,9 +24,11 @@ jobs:
         node-version: '18.12.1'
     # 設定快取
     - name: Cache dependencies
-      uses: actions/cache@v4
+      uses: actions/cache@v3
       with:
-        path: ~/.npm
+        path: |
+        node_modules
+        ~/.npm
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     # 安裝npm
     - name: Install dependencies
