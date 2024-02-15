@@ -17,7 +17,7 @@ jobs:
     # 取得程式碼
     - name: get code
       uses: actions/checkout@v3
-    # 安裝node.js
+    # 安裝node
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
