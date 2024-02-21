@@ -7,7 +7,7 @@ import { FETCH_AUTH_ORDER } from '@/service';
 import { setupUserAuthStore } from '@/stores/userAurhStore';
 import Button from '@/components/common/Button.vue';
 import UserTitle from '@/components/UserTitle.vue';
-
+// 123
 const swal = inject('$swal');
 
 const route = useRoute();

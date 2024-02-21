@@ -12,7 +12,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.12.1]
-        
     steps:
     # 取得程式碼
     - name: get code
