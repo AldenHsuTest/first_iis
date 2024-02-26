@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [18.12.1]
     steps:
     # 取得程式碼
     - name: get code
@@ -20,7 +20,7 @@ jobs:
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: '18.12.1'
     # 設定快取
     - uses: actions/cache@v3
       id: npm-cache
@@ -29,7 +29,7 @@ jobs:
         key: node-${{ hashFiles('**/package-lock.json') }}
     # 安裝npm
     - name: Install dependencies
-      run: npm ci
+      run: npm i
     # build檔案
     - name: Build
       run: npm run build
