@@ -29,7 +29,7 @@ jobs:
         key: node-${{ hashFiles('**/package-lock.json') }}
     # 安裝npm
     - name: Install dependencies
-      run: npm i
+      run: npm ci
     # build檔案
     - name: Build
       run: npm run build
@@ -43,6 +43,6 @@ jobs:
     - name: Deploy-Product
       run: |
         cp -r -Force ${{ secrets.SrcPath }} ${{ secrets.SrcPath }}backup
-        rm -r ${{ secrets.SrcPath }}
+        rm -r -Force ${{ secrets.SrcPath }}
         mkdir ${{ secrets.SrcPath }}
         cp -r -Force dist/* ${{ secrets.SrcPath }}
