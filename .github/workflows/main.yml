@@ -43,6 +43,7 @@ jobs:
     - name: Deploy-Product
       run: |
         cp -r -Force ${{ secrets.SrcPath }} ${{ secrets.SrcPath }}backup
+        Start-Sleep -Seconds 5
         rm -r -Force ${{ secrets.SrcPath }}
         mkdir ${{ secrets.SrcPath }}
         cp -r -Force dist/* ${{ secrets.SrcPath }}
