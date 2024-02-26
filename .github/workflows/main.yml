@@ -38,7 +38,7 @@ jobs:
     runs-on: self-hosted
     if: ${{ success() }}
     needs: build
-  
+  # 1
     steps: 
     - name: Deploy-Product
       run: |
