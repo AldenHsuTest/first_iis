@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.12.1]
+        node-version: [20]
     steps:
     # 取得程式碼
     - name: get code
@@ -20,7 +20,7 @@ jobs:
     - name: Set up Node
       uses: actions/setup-node@v3
       with:
-        node-version: '18.12.1'
+        node-version: '20'
     # 設定快取
     - uses: actions/cache@v3
       id: npm-cache
