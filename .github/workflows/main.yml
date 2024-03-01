@@ -8,7 +8,7 @@ jobs:
   # 工作流程名稱可以自己取名
   build:
   # 設定runner
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [18.12.1]
