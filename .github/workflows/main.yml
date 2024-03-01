@@ -8,7 +8,7 @@ jobs:
   # 工作流程名稱可以自己取名
   build:
   # 設定runner
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [18.12.1]
@@ -22,25 +22,24 @@ jobs:
       with:
         node-version: '18.12.1'
     # 設定快取
-    - uses: actions/cache@v3
-      id: npm-cache
-      with:
-        path: '~/.npm'
-        key: node-${{ hashFiles('**/package-lock.json') }}
+    # - uses: actions/cache@v3
+    #   id: npm-cache
+    #   with:
+    #     path: '~/.npm'
+    #     key: node-${{ hashFiles('**/package-lock.json') }}
     # 安裝npm
     - name: Install dependencies
       run: npm ci
-
+    # build檔案
+    - name: Build
+      run: npm run build
   
   deploy:
     runs-on: self-hosted
     if: ${{ success() }}
     needs: build
-
+  # 1
     steps: 
-    # build檔案
-    - name: Build
-      run: npm run build
     - name: Deploy-Product
       run: |
         cp -r -Force ${{ secrets.SrcPath }} ${{ secrets.SrcPath }}backup
