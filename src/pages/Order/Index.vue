@@ -828,7 +828,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <UserTitle :title=" orderPage ? '接駁服務' : '預約訂單' " titleSrc='/images/orderTitle.svg'></UserTitle>
+  <UserTitle :title=" orderPage ? '接駁' : '預約訂單' " titleSrc='/images/orderTitle.svg'></UserTitle>
   <form v-show="orderPage" @submit.prevent="onSubmit()" class=" w-full max-w-990px  ">
     <!-- 接駁服務 -->
     <div class=" w-full  flex justify-center flex-col md:flex-row gap-80px ">
