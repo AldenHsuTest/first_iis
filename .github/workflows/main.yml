@@ -30,16 +30,17 @@ jobs:
     # 安裝npm
     - name: Install dependencies
       run: npm ci
-    # build檔案
-    - name: Build
-      run: npm run build
+
   
   deploy:
     runs-on: self-hosted
     if: ${{ success() }}
     needs: build
-  # 1
+
     steps: 
+    # build檔案
+    - name: Build
+      run: npm run build
     - name: Deploy-Product
       run: |
         cp -r -Force ${{ secrets.SrcPath }} ${{ secrets.SrcPath }}backup
